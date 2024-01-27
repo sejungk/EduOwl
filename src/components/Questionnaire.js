@@ -6,11 +6,16 @@ import '../styles/Questionnaire.css';
 
 const Questionnaire = () => {
   const [currentQuestion, setCurrentQuestion] = useState(1);
+  const [name, setName] = useState(null);
   const [responses, setResponses] = useState({});
 
   const handleNextQuestion = (questionNumber, response) => {
     setResponses((prevResponses) => ({ ...prevResponses, [questionNumber]: response }));
     setCurrentQuestion((prevQuestion) => prevQuestion + 1);
+  };
+
+  const handleNameChange = (name) => {
+    setResponses((prevResponses) => ({ ...prevResponses, 1: name }));
   };
 
   useEffect(() => {
@@ -24,7 +29,7 @@ const Questionnaire = () => {
   const renderQuestionContent = (questionNumber) => {
     switch (questionNumber) {
       case 1:
-        return <QuestionPage1 onSubmit={(response) => handleNextQuestion(1, response)} />;
+        return <QuestionPage1 name={responses[1]} onNameChange={handleNameChange} />;
       case 2:
         return <p>Question {questionNumber}.</p>;
       case 3:
@@ -58,7 +63,10 @@ const Questionnaire = () => {
         {currentQuestion === 5 ? (
           <SolidBttn onClick={handleCompleteQuestionnaire} label="Submit" />
         ) : (
-          <SolidBttn onClick={() => handleNextQuestion(currentQuestion, null)} label="Continue" />
+          <SolidBttn
+            onClick={() => handleNextQuestion(currentQuestion, responses[currentQuestion] || null)}
+            label="Continue"
+          />
         )}
       </div>
     </div>

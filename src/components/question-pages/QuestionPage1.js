@@ -1,31 +1,19 @@
 import React, { useState } from 'react';
 import '../../styles/QuestionPages.css';
 
-const QuestionPage1 = ({ onSubmit }) => {
-  const [name, setName] = useState('');
-
-  const handleInputChange = (e) => {
-    setName(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onSubmit(name);
-  };
+const QuestionPage1 = ({ name, onNameChange }) => {
 
   return (
     <div className="questionPage">
       <h2>Hello! Before we get started, what is your name?</h2>
-      <form onSubmit={handleSubmit}>
         <label>
           <input
             className="textForm"
             type="text"
             value={name}
-            onChange={handleInputChange}
+            onChange={(e) => onNameChange(e.target.value)}
           />
         </label>
-      </form>
     </div>
   );
 };
