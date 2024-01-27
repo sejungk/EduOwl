@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ProgressBar from './ProgressBar';
 import SolidBttn from './SolidBttn';
 import QuestionPage1 from './question-pages/QuestionPage1';
+import QuestionPage2 from './question-pages/QuestionPage2';
 import '../styles/Questionnaire.css';
 
 const Questionnaire = () => {
@@ -31,7 +32,7 @@ const Questionnaire = () => {
       case 1:
         return <QuestionPage1 name={responses[1]} onNameChange={handleNameChange} />;
       case 2:
-        return <p>Question {questionNumber}.</p>;
+        return <QuestionPage2 name={responses[1]} onNameChange={handleNameChange} />;
       case 3:
         return <p>Question {questionNumber}.</p>;
       case 4:
