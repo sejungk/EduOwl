@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
-import SolidBttn from './SolidBttn';
-import '../styles/NameForm.css';
+import '../../styles/QuestionPages.css';
 
-const NameForm = ({ onSubmit }) => {
-  const handleClick = () => {
-    console.log('Button clicked!');
-    // Add any additional logic you need here
-  };
+const QuestionPage1 = ({ onSubmit }) => {
   const [name, setName] = useState('');
 
   const handleInputChange = (e) => {
@@ -19,8 +14,8 @@ const NameForm = ({ onSubmit }) => {
   };
 
   return (
-    <div>
-      <h2>Hello, what is your name?</h2>
+    <div className="questionPage">
+      <h2>Hello! Before we get started, what is your name?</h2>
       <form onSubmit={handleSubmit}>
         <label>
           <input
@@ -31,11 +26,8 @@ const NameForm = ({ onSubmit }) => {
           />
         </label>
       </form>
-      <div className="bttn">
-        <SolidBttn onClick={handleClick} label="Continue" />
-      </div>
     </div>
   );
 };
 
-export default NameForm;
+export default QuestionPage1;
