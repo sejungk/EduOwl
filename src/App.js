@@ -1,12 +1,10 @@
-import './App.css';
-import NameForm from './components/NameForm';
+import './styles/App.css';
+import Questionnaire from './components/Questionnaire';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <NameForm />
-      </header>
+      <Questionnaire />
     </div>
   );
 }

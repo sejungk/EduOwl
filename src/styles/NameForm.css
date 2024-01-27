@@ -1,0 +1,20 @@
+.textForm {
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 4px;
+  font-size: 16px;
+  width: 250px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+
+.bttn {
+  position: absolute;
+  bottom: 0px;
+  right: 10px;
+}

@@ -1,0 +1,18 @@
+.progressContainer {
+  height: 10px;
+  background-color: #ddd;
+  width: 100%;
+}
+
+.progressBar {
+  height: 100%;
+  background-color: #FFCE00;
+  transition: width 0.3s ease;
+}
+
+.nextButton {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  padding: 10px;
+}

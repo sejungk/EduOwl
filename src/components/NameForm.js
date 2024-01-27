@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
+import SolidBttn from './SolidBttn';
+import '../styles/NameForm.css';
 
 const NameForm = ({ onSubmit }) => {
+  const handleClick = () => {
+    console.log('Button clicked!');
+    // Add any additional logic you need here
+  };
   const [name, setName] = useState('');
 
   const handleInputChange = (e) => {
@@ -18,13 +24,16 @@ const NameForm = ({ onSubmit }) => {
       <form onSubmit={handleSubmit}>
         <label>
           <input
+            className="textForm"
             type="text"
             value={name}
             onChange={handleInputChange}
           />
         </label>
-        <button type="submit">Continue</button>
       </form>
+      <div className="bttn">
+        <SolidBttn onClick={handleClick} label="Continue" />
+      </div>
     </div>
   );
 };
