@@ -14,10 +14,6 @@ Recognizing the importance of selecting the right major, EduOwl evaluates studen
 Building EduOwl involved meticulous gathering of the latest admission information from Rowan University's official website using Python and web scraping techniques. The development of the EduOwl chatbot incorporated PyPDF2 for extracting text from PDF documents and OpenAI's language models powered by LangChain for an effective conversation management system.
 
 ## Collaborators
-Sejung Kim
-Role: Frontend Development
-Contact: sejungkim129@gmail.com
-
 - **Sejung Kim**
   - Role: UX Design, Frontend Development
   - School: Oregon State University
