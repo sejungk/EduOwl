@@ -229,7 +229,7 @@ const Questionnaire = () => {
   };
 
   return (
-    <div className="questionnaire">
+    <div className={`${currentQuestion === 8 ? 'chatBotContainer' : 'questionnaire '}`}>
       {currentQuestion !== 8 && <ProgressBar currentQuestion={currentQuestion} totalQuestions={7} />}
 
       {renderQuestionContent(currentQuestion)}

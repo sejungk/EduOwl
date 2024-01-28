@@ -154,13 +154,6 @@ const ChatBot = ({responses}) => {
             opacity: isTyping ? 0.5 : 1,
           }}
         />
-
-      {/* <button
-        type="submit"
-        disabled={isTyping}
-      >
-        Send
-      </button> */}
     </form>
   </div>
   );
@@ -168,23 +161,3 @@ const ChatBot = ({responses}) => {
 
 export default ChatBot;
 
-
-      {/* <input
-        className="messageTextBox"
-        type="text"
-        name="input"
-        placeholder="Type your message..."
-        disabled={isTyping}
-      />
-      <button
-        type="submit"
-        disabled={isTyping}
-      >
-        Send
-      </button>
-    </form>
-  </div>
-  );
-};
-
-export default ChatBot; */}
