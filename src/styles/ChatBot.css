@@ -41,8 +41,8 @@
 .messageSendBttn {
   height: 30px;
   position: absolute;
-  right: 15%; /* Adjust the right position as needed */
-  top: 92%;
+  right: 27%; /* Adjust the right position as needed */
+  top: 91%;
   transform: translateY(-50%);
   cursor: pointer;
   opacity: 1;
