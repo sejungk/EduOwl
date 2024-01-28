@@ -4,7 +4,7 @@ import '../styles/ChatBot.css';
 const ChatBot = ({responses}) => {
 
   // Your OpenAI API key
- const API_KEY = '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';
+ const API_KEY = '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';
  const [messages, setMessages] = useState([
   {
   role: "system",

@@ -1,71 +1,52 @@
-# Getting Started with Create React App
+# EduOwl
+EduOwl is an innovative tool designed to simplify the university admissions process and assist students in finding a major that aligns with their passions and strengths. The application features an AI-driven chat interface for inquiries about Rowan University, coupled with a major recommendation system that evaluates students' interests, strengths, and career goals to suggest suitable majors.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## How It Works
 
-## Available Scripts
+### 1. University Admissions Guidance
+EduOwl's chat interface provides an engaging and informative user experience, guiding students through various aspects of Rowan University, including academics, campus life, and admission requirements.
 
-In the project directory, you can run:
+### 2. Major Recommendation System
+Recognizing the importance of selecting the right major, EduOwl evaluates students' unique characteristics and career goals. It then suggests suitable majors, streamlining the critical decision-making process.
 
-### `npm start`
+## How We Built It
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Building EduOwl involved meticulous gathering of the latest admission information from Rowan University's official website using Python and web scraping techniques. The development of the EduOwl chatbot incorporated PyPDF2 for extracting text from PDF documents and OpenAI's language models powered by LangChain for an effective conversation management system.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Collaborators
+Sejung Kim
+Role: Frontend Development
+Contact: sejungkim129@gmail.com
 
-### `npm test`
+- **Sejung Kim**
+  - Role: UX Design, Frontend Development
+  - School: Oregon State University
+  - Contact: sejungkim129@gmail.com
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Blen Begashaw**
+  - Role:Backend Developer
+  - School: Marymount University
+  - Contact: bwb61179@marymount.edu
 
-### `npm run build`
+  - **Khaikoh Toeipromthong**
+  - Role: Design, Backend Developer
+  - School: Rowan University
+  - Contact: khaikoh112@gmail.com
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  - **Czianell Magbago**
+  - Role: Backend Developer
+  - School: Rowan University
+  - Contact: cdmagbago@gmail.com
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Challenges and Accomplishments
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+We faced challenges with Azure AI Studio but adapted by integrating ChatGPT OpenAI API, enhancing EduOwl's functionality. We take pride in our distinctive major selection feature and have learned valuable lessons in adaptability and creative problem-solving.
 
-### `npm run eject`
+## What's Next for EduOwl
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+EduOwl plans to expand advisory services, incorporate Microsoft Azure for an enhanced intelligent bot experience, and enrich advising features across various academic disciplines.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Video Link
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+https://youtu.be/wpuzgG5y8CA
 
