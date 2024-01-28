@@ -10,15 +10,30 @@ const Questionnaire = () => {
   const [selectedEnjoyableSubjects, setSelectedEnjoyableSubjects] = useState([]);
   const [responses, setResponses] = useState({});
 
-  const updateSelectedEnjoyableSubjects = (subject) => {
-    setSelectedEnjoyableSubjects((prevSelected) => [...prevSelected, subject]);
 
-    // Update responses state for question 2
-    setResponses((prevResponses) => ({
-      ...prevResponses,
-      2: { selectedEnjoyableSubjects: [...prevResponses[2]?.selectedEnjoyableSubjects || [], subject] },
-    }));
+  const updateSelectedEnjoyableSubjects = (subject, isRemoval) => {
+    setSelectedEnjoyableSubjects((prevSelected) => {
+      if (isRemoval) {
+        return prevSelected.filter((item) => item !== subject);
+      } else {
+        return [...prevSelected, subject];
+      }
+    });
+
+    setResponses((prevResponses) => {
+      const currentSelectedSubjects = prevResponses[2]?.selectedEnjoyableSubjects.includes(subject)
+        ? prevResponses[2]?.selectedEnjoyableSubjects.filter((item) => item !== subject)
+        : [...prevResponses[2]?.selectedEnjoyableSubjects || [], subject];
+
+      return {
+        ...prevResponses,
+        2: {
+          selectedEnjoyableSubjects: currentSelectedSubjects,
+        },
+      };
+    });
   };
+
 
   const handleNextQuestion = (questionNumber, response) => {
     setResponses((prevResponses) => ({ ...prevResponses, [questionNumber]: response }));

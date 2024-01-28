@@ -9,8 +9,8 @@
 .questionnaire {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 100px);
-  margin: 50px;
+  height: calc(100vh - 70px);
+  margin: 40px 40px 20px;
 }
 
 .buttonContainer {
@@ -26,12 +26,13 @@
 }
 
 .optionCard {
+  flex: 0 0 calc(14% - 20px);
+  max-width: calc(14% - 20px);
   width: 150px;
-  height: 150px;
-  border: 1px solid #ddd;
+  height: 140px;
   margin: 10px;
   text-align: center;
-  padding: 20px 5px 5px;
+  padding: 15px 5px 0;
   box-shadow: 0px 4px 5px 6px rgba(0, 0, 0, 0.1);
   border-radius: 25px;
   transition: background-color 500ms;
@@ -40,6 +41,7 @@
 .optionCard img {
   max-width: 100%;
   height: auto;
+  display: flex;
 }
 
 .optionCard .optionIcon svg * {
@@ -57,4 +59,12 @@
 
 .optionCard:hover .optionIcon svg *, .selected svg * {
   stroke: white;
+}
+
+.optionCardText {
+  margin: 0;
+  min-height: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
