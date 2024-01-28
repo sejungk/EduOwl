@@ -4,8 +4,8 @@ import '../../styles/QuestionPages.css';
 const QuestionPage1 = ({ name, onNameChange }) => {
 
   return (
-    <div className="questionPage">
-      <h2>Hello! Before we get started, what is your name?</h2>
+    <div className="questionPage center">
+      <h2>Hello! <br/> Before we get started, what is your name?</h2>
         <label>
           <input
             className="textForm"

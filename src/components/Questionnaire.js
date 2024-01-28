@@ -1,15 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import ProgressBar from './ProgressBar';
 import SolidBttn from './SolidBttn';
+import StrokeBttn from './StrokeBttn';
 import QuestionPage1 from './question-pages/QuestionPage1';
 import QuestionPage2 from './question-pages/QuestionPage2';
 import QuestionPage3 from './question-pages/QuestionPage3';
+import QuestionPage4 from './question-pages/QuestionPage4';
+import QuestionPage5 from './question-pages/QuestionPage5';
 import '../styles/Questionnaire.css';
 
 const Questionnaire = () => {
   const [currentQuestion, setCurrentQuestion] = useState(1);
   const [selectedEnjoyableSubjects, setSelectedEnjoyableSubjects] = useState([]);
   const [selectedExcelSubjects, setSelectedExcelSubjects] = useState([]);
+  const [selectedStrengths, setSelectedStrengths] = useState([]);
+  const [selectedWeaknesses, setSelectedWeaknesses] = useState([]);
   const [responses, setResponses] = useState({});
 
 
@@ -59,6 +64,51 @@ const Questionnaire = () => {
     });
   };
 
+  const updateSelectedStrengths = (strength, isRemoval) => {
+    setSelectedStrengths((prevSelected) => {
+      if (isRemoval) {
+        return prevSelected.filter((item) => item !== strength);
+      } else {
+        return [...prevSelected, strength];
+      }
+    });
+
+    setResponses((prevResponses) => {
+      const currentSelectedStrengths = prevResponses[4]?.selectedStrengths.includes(strength)
+        ? prevResponses[4]?.selectedStrengths.filter((item) => item !== strength)
+        : [...prevResponses[4]?.selectedStrengths || [], strength];
+
+      return {
+        ...prevResponses,
+        4: {
+          selectedStrengths: currentSelectedStrengths,
+        },
+      };
+    });
+  };
+
+  const updateSelectedWeaknesses = (strength, isRemoval) => {
+    setSelectedWeaknesses((prevSelected) => {
+      if (isRemoval) {
+        return prevSelected.filter((item) => item !== strength);
+      } else {
+        return [...prevSelected, strength];
+      }
+    });
+
+    setResponses((prevResponses) => {
+      const currentSelectedWeaknesses = prevResponses[5]?.selectedWeaknesses.includes(strength)
+        ? prevResponses[5]?.selectedWeaknesses.filter((item) => item !== strength)
+        : [...prevResponses[5]?.selectedWeaknesses || [], strength];
+
+      return {
+        ...prevResponses,
+        5: {
+          selectedWeaknesses: currentSelectedWeaknesses,
+        },
+      };
+    });
+  };
 
   const handleNextQuestion = (questionNumber, response) => {
     setResponses((prevResponses) => ({ ...prevResponses, [questionNumber]: response }));
@@ -86,9 +136,9 @@ const Questionnaire = () => {
       case 3:
         return <QuestionPage3 updateSelectedExcelSubjects={updateSelectedExcelSubjects} />;
       case 4:
-        return <p>Question {questionNumber}.</p>;
+        return <QuestionPage4 updateSelectedStrengths={updateSelectedStrengths} />;
       case 5:
-        return <p>Question {questionNumber}.</p>;
+        return <QuestionPage5 updateSelectedWeaknesses={updateSelectedWeaknesses} />;
       case 6:
         return <p>Question {questionNumber}.</p>;
       default:
@@ -106,7 +156,7 @@ const Questionnaire = () => {
 
       {renderQuestionContent(currentQuestion)}
       <div className="buttonContainer">
-        <SolidBttn
+        <StrokeBttn
           onClick={handleBackQuestion}
           label="Back"
           className={`backButton ${currentQuestion <= 1 ? 'disabled' : ''}`}

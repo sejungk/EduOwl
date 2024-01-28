@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/SolidBttn.css'
+import '../styles/Bttn.css'
 
 const SolidBttn = ({ onClick, label }) => {
   return (

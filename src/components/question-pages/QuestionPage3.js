@@ -9,7 +9,10 @@ const QuestionPage3 = ({ updateSelectedExcelSubjects }) => {
 
   return (
     <div className="questionPage">
-      <h2>What classes do you excel in the most?</h2>
+      <div className="questionPageText">
+        <h2>What classes do you excel in the most?</h2>
+      </div>
+
       <div className="optionsContainer flex">
       {subjects.map((subject, index) => {
         const wordIndex = subject.search(/[^a-zA-Z]/);

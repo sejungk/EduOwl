@@ -1,10 +1,10 @@
 .textForm {
   padding: 15px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
   margin: 4px;
   font-size: 16px;
-  width: 250px;
+  width: 300px;
 }
 
 label {
@@ -17,4 +17,33 @@ label {
   position: absolute;
   bottom: 0px;
   right: 10px;
+}
+
+.questionPage h2 {
+  padding: 10px 0;
+}
+
+.questionPageText {
+  padding: 20px 0 10px;
+}
+
+.questionPageText h2, .questionPageText .subtext {
+  margin: 0;
+  padding: 0;
+}
+
+.subtext {
+  color: #7D7D7D;
+  font-size: 15px;
+}
+
+.strokedOptionContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-top: 5%;
+}
+
+.strokedOptionContainer .strokedOption {
+  width: 28%;
 }
