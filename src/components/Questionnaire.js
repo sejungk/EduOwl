@@ -7,8 +7,18 @@ import '../styles/Questionnaire.css';
 
 const Questionnaire = () => {
   const [currentQuestion, setCurrentQuestion] = useState(1);
-  const [name, setName] = useState(null);
+  const [selectedEnjoyableSubjects, setSelectedEnjoyableSubjects] = useState([]);
   const [responses, setResponses] = useState({});
+
+  const updateSelectedEnjoyableSubjects = (subject) => {
+    setSelectedEnjoyableSubjects((prevSelected) => [...prevSelected, subject]);
+
+    // Update responses state for question 2
+    setResponses((prevResponses) => ({
+      ...prevResponses,
+      2: { selectedEnjoyableSubjects: [...prevResponses[2]?.selectedEnjoyableSubjects || [], subject] },
+    }));
+  };
 
   const handleNextQuestion = (questionNumber, response) => {
     setResponses((prevResponses) => ({ ...prevResponses, [questionNumber]: response }));
@@ -32,7 +42,7 @@ const Questionnaire = () => {
       case 1:
         return <QuestionPage1 name={responses[1]} onNameChange={handleNameChange} />;
       case 2:
-        return <QuestionPage2 name={responses[1]} onNameChange={handleNameChange} />;
+        return <QuestionPage2 updateSelectedEnjoyableSubjects={updateSelectedEnjoyableSubjects} />;
       case 3:
         return <p>Question {questionNumber}.</p>;
       case 4:

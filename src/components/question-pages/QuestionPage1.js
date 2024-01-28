@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../../styles/QuestionPages.css';
 
 const QuestionPage1 = ({ name, onNameChange }) => {

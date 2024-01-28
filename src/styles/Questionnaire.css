@@ -46,15 +46,15 @@
   transition: stroke 500ms;
 }
 
-.optionCard:hover {
+.optionCard:hover, .selected {
   background-color: #5B1400;
   cursor: pointer;
 }
 
-.optionCard:hover .optionCardText {
+.optionCard:hover .optionCardText, .selected {
   color: #ffffff;
 }
 
-.optionCard:hover .optionIcon svg * {
+.optionCard:hover .optionIcon svg *, .selected svg * {
   stroke: white;
 }
