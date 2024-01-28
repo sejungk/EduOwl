@@ -4,9 +4,10 @@
   display: flex;
   vertical-align: middle;
   background-color: #FFF4C4;
-  border: solid black;
 }
+
 .chatBot {
+  padding-top: 20px;
   background-color: white;
   border: solid black;
   border-radius: 30px;
@@ -17,6 +18,16 @@
   min-width: 500px;
   width: 50%;
   margin: auto;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.messageContainer {
+  max-height: calc(100% - 80px);
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  transition: max-height 0.5s ease;
 }
 
 .messageTextBox {
@@ -28,6 +39,7 @@
   margin: 4px;
   font-size: 16px;
   width: 85%;
+  position: relative;
 }
 
 .messageTextBox input {
@@ -36,20 +48,52 @@
   outline: none;
   padding: 0;
   margin: 0;
+  width: 100%;
 }
 
 .messageSendBttn {
   height: 30px;
   position: absolute;
-  right: 27%; /* Adjust the right position as needed */
+  right: 27%;
   top: 91%;
   transform: translateY(-50%);
   cursor: pointer;
   opacity: 1;
+  position: relative;
+  align-self: flex-end;
 }
 
 .messageSendBttn {
+  position: fixed;
   cursor: pointer;
   opacity: 1;
-  margin-left: 10px; /* Add margin between input and image */
+  margin-left: 10px;
+}
+
+.message {
+  width: 70%;
+  padding: 1px 5px;
+  margin-bottom: 25px;
+  border-radius: 25px;
+}
+
+.message h3 {
+  margin: 10px 0 8px;
+ }
+
+.message p {
+ margin: 0 10px 20px;
+}
+
+.owlMessage {
+  margin-right: 25%;
+  margin-left: 5%;
+  background-color: #5B1400;
+  color: white;
+}
+
+.userMessage {
+  margin-left: 25%;
+  margin-right: 5%;
+  background-color: #FFCE00;
 }

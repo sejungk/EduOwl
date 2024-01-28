@@ -1,22 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import '../styles/ChatBot.css';
 
 const ChatBot = ({responses}) => {
 
   // Your OpenAI API key
- const API_KEY = process.env.OPEN_API_KEY;
+ const API_KEY = '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';
  const [messages, setMessages] = useState([
   {
-  role: "EduOwl",
+  role: "system",
   content:
   "Ask me a question!",
   },
   ]);
 
   const [isTyping, setIsTyping] = useState(false);
+  const messageContainerRef = useRef(null);
 
   useEffect(() => {
-    console.log("Responses:", responses);
+
+    if (messageContainerRef.current) {
+      // Scroll to the bottom of the message container when messages change
+      messageContainerRef.current.scrollTop = messageContainerRef.current.scrollHeight;
+    }
 
     const fetchChatData = async (userMessage) => {
       try {
@@ -30,14 +35,15 @@ const ChatBot = ({responses}) => {
             },
             body: JSON.stringify({
               model: "gpt-3.5-turbo",
-              messages: [...messages, { role: "user", content: userMessage }],
+              messages: [...messages, { role: 'user', content: userMessage }],
               temperature: 0.7,
             }),
           }
         );
 
         if (!response.ok) {
-          throw new Error("Oops! Something went wrong while processing your request.");
+          const errorResponse = await response.json();
+          throw new Error(`Oops! Something went wrong. Status: ${response.status}, Error: ${JSON.stringify(errorResponse)}`);
         }
 
         const responseData = await response.json();
@@ -50,14 +56,14 @@ const ChatBot = ({responses}) => {
           },
         ]);
       } catch (error) {
-        console.error("Error while fetching chat data:", error);
+        console.error("Error while fetching chat data:", error.message);
         setIsTyping(false);
       }
     };
 
     if (isTyping) {
       // You can replace this with a message saying "Bot is typing..."
-      fetchChatData("Typing message");
+      fetchChatData("EduOwn is typing");
     }
   }, [isTyping, messages, API_KEY]);
   // const messages = [{ "role": "user", "content": "This is a test!" }];
@@ -65,7 +71,7 @@ const ChatBot = ({responses}) => {
   const handleSendMessage = (messageContent) => {
     setMessages((prevMessages) => [
       ...prevMessages,
-      { role: responses.name, content: messageContent },
+      { role: 'user', content: messageContent },
     ]);
   //invoke chatData
     chatData(messageContent);
@@ -111,14 +117,21 @@ const ChatBot = ({responses}) => {
 
   return (
     <div className="chatBot">
-      <div>
+      <div ref={messageContainerRef} className="messageContainer">
         {messages.map((message, index) => (
-          <div key={index}>
-            <h3>{message.role}</h3>
+          <div
+            key={index}
+            className={`message ${message.role === "system" || message.role === "assistant" ? "owlMessage" : "userMessage"}`}
+            >
+            {message.role === "system"  || message.role === "assistant" ? (
+            <h3>EduOwl</h3>
+          ) : (
+            <h3>{responses.name}</h3>
+          )}
             <p>{message.content}</p>
           </div>
         ))}
-        {isTyping && <p>Bot is typing...</p>}
+        {isTyping && <p>EduOwl is typing...</p>}
       </div>
       <form
       onSubmit={(e) => {
