@@ -24,12 +24,12 @@ Building EduOwl involved meticulous gathering of the latest admission informatio
   - School: Marymount University
   - Contact: bwb61179@marymount.edu
 
-  - **Khaikoh Toeipromthong**
+- **Khaikoh Toeipromthong**
   - Role: Design, Backend Developer
   - School: Rowan University
   - Contact: khaikoh112@gmail.com
 
-  - **Czianell Magbago**
+ - **Czianell Magbago**
   - Role: Backend Developer
   - School: Rowan University
   - Contact: cdmagbago@gmail.com
