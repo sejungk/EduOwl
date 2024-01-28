@@ -7,6 +7,8 @@ import QuestionPage2 from './question-pages/QuestionPage2';
 import QuestionPage3 from './question-pages/QuestionPage3';
 import QuestionPage4 from './question-pages/QuestionPage4';
 import QuestionPage5 from './question-pages/QuestionPage5';
+import QuestionPage6 from './question-pages/QuestionPage6';
+import QuestionPage7 from './question-pages/QuestionPage7';
 import '../styles/Questionnaire.css';
 
 const Questionnaire = () => {
@@ -15,6 +17,8 @@ const Questionnaire = () => {
   const [selectedExcelSubjects, setSelectedExcelSubjects] = useState([]);
   const [selectedStrengths, setSelectedStrengths] = useState([]);
   const [selectedWeaknesses, setSelectedWeaknesses] = useState([]);
+  const [selectedRange, setSelectedRange] = useState([]);
+  const [selectedAspect, setSelectedAspect] = useState([]);
   const [responses, setResponses] = useState({});
 
 
@@ -87,24 +91,70 @@ const Questionnaire = () => {
     });
   };
 
-  const updateSelectedWeaknesses = (strength, isRemoval) => {
+  const updateSelectedWeaknesses = (weakness, isRemoval) => {
     setSelectedWeaknesses((prevSelected) => {
       if (isRemoval) {
-        return prevSelected.filter((item) => item !== strength);
+        return prevSelected.filter((item) => item !== weakness);
       } else {
-        return [...prevSelected, strength];
+        return [...prevSelected, weakness];
       }
     });
 
     setResponses((prevResponses) => {
-      const currentSelectedWeaknesses = prevResponses[5]?.selectedWeaknesses.includes(strength)
-        ? prevResponses[5]?.selectedWeaknesses.filter((item) => item !== strength)
-        : [...prevResponses[5]?.selectedWeaknesses || [], strength];
+      const currentSelectedWeaknesses = prevResponses[5]?.selectedWeaknesses.includes(weakness)
+        ? prevResponses[5]?.selectedWeaknesses.filter((item) => item !== weakness)
+        : [...prevResponses[5]?.selectedWeaknesses || [], weakness];
 
       return {
         ...prevResponses,
         5: {
           selectedWeaknesses: currentSelectedWeaknesses,
+        },
+      };
+    });
+  };
+
+  const updateSelectedRange = (range, isRemoval) => {
+    setSelectedRange((prevSelected) => {
+      if (isRemoval) {
+        return prevSelected.filter((item) => item !== range);
+      } else {
+        return [...prevSelected, range];
+      }
+    });
+
+    setResponses((prevResponses) => {
+      const currentSelectedRange = prevResponses[6]?.selectedRange.includes(range)
+        ? prevResponses[6]?.selectedRange.filter((item) => item !== range)
+        : [...prevResponses[6]?.selectedRange || [], range];
+
+      return {
+        ...prevResponses,
+        6: {
+          selectedRange: currentSelectedRange,
+        },
+      };
+    });
+  };
+
+  const updateSelectedAspect = (aspect, isRemoval) => {
+    setSelectedAspect((prevSelected) => {
+      if (isRemoval) {
+        return prevSelected.filter((item) => item !== aspect);
+      } else {
+        return [...prevSelected, aspect];
+      }
+    });
+
+    setResponses((prevResponses) => {
+      const currentSelectedAspect = prevResponses[7]?.selectedAspect.includes(aspect)
+        ? prevResponses[7]?.selectedAspect.filter((item) => item !== aspect)
+        : [...prevResponses[7]?.selectedAspect || [], aspect];
+
+      return {
+        ...prevResponses,
+        7: {
+          selectedAspect: currentSelectedAspect,
         },
       };
     });
@@ -140,7 +190,9 @@ const Questionnaire = () => {
       case 5:
         return <QuestionPage5 updateSelectedWeaknesses={updateSelectedWeaknesses} />;
       case 6:
-        return <p>Question {questionNumber}.</p>;
+        return <QuestionPage6 updateSelectedRange={updateSelectedRange} />;
+      case 7:
+        return <QuestionPage7 updateSelectedAspect={updateSelectedAspect} />;
       default:
         return <p>No content for this question.</p>;
     }
@@ -152,7 +204,7 @@ const Questionnaire = () => {
 
   return (
     <div className="questionnaire">
-      <ProgressBar currentQuestion={currentQuestion} totalQuestions={5} />
+      <ProgressBar currentQuestion={currentQuestion} totalQuestions={7} />
 
       {renderQuestionContent(currentQuestion)}
       <div className="buttonContainer">
@@ -161,7 +213,7 @@ const Questionnaire = () => {
           label="Back"
           className={`backButton ${currentQuestion <= 1 ? 'disabled' : ''}`}
         />
-        {currentQuestion === 5 ? (
+        {currentQuestion === 7 ? (
           <SolidBttn onClick={handleCompleteQuestionnaire} label="Submit" />
         ) : (
           <SolidBttn

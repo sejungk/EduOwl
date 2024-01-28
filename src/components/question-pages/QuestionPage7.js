@@ -2,23 +2,23 @@ import React from 'react';
 import StrokeSelectionLargeBttn from '../StrokeSelectionLargeBttn';
 import '../../styles/QuestionPages.css';
 
-const QuestionPage6 = ({ updateSelectedRange }) => {
-  const SalaryRanges = [
-    "$20,000 - $50,000", "$50,000 - $100,000", "$100,000 - $150,000", "$150,000 - $250,000", "$250,000 - $500,000+", "Doesn't matter"
+const QuestionPage7 = ({ updateSelectedAspect }) => {
+  const JobAspects = [
+    "Work-life Balance", "Job Satisfaction", "Social Impact", "Job Security", "Development Opportunities", "Employee Benefits"
   ];
 
   return (
     <div className="questionPage">
       <div className="questionPageText">
-        <h2>What is your expected salary?</h2>
+        <h2>Which aspect is the most important to you?</h2>
       </div>
 
       <div className="strokedOptionContainer flex">
-        {SalaryRanges.map((range) => (
+        {JobAspects.map((Aspect) => (
           <StrokeSelectionLargeBttn
-            selection={range}
+            selection={Aspect}
             className="strokedLargeOption"
-            updateSelection = {updateSelectedRange}
+            updateSelection = {updateSelectedAspect}
           />
         ))}
       </div>
@@ -26,4 +26,4 @@ const QuestionPage6 = ({ updateSelectedRange }) => {
   );
 };
 
-export default QuestionPage6;
+export default QuestionPage7;

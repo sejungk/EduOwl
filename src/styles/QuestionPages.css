@@ -41,7 +41,7 @@ label {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding-top: 5%;
+  padding-top: 4%;
 }
 
 .strokedOptionContainer .strokedOption {
