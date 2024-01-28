@@ -3,11 +3,13 @@ import ProgressBar from './ProgressBar';
 import SolidBttn from './SolidBttn';
 import QuestionPage1 from './question-pages/QuestionPage1';
 import QuestionPage2 from './question-pages/QuestionPage2';
+import QuestionPage3 from './question-pages/QuestionPage3';
 import '../styles/Questionnaire.css';
 
 const Questionnaire = () => {
   const [currentQuestion, setCurrentQuestion] = useState(1);
   const [selectedEnjoyableSubjects, setSelectedEnjoyableSubjects] = useState([]);
+  const [selectedExcelSubjects, setSelectedExcelSubjects] = useState([]);
   const [responses, setResponses] = useState({});
 
 
@@ -29,6 +31,29 @@ const Questionnaire = () => {
         ...prevResponses,
         2: {
           selectedEnjoyableSubjects: currentSelectedSubjects,
+        },
+      };
+    });
+  };
+
+  const updateSelectedExcelSubjects = (subject, isRemoval) => {
+    setSelectedExcelSubjects((prevSelected) => {
+      if (isRemoval) {
+        return prevSelected.filter((item) => item !== subject);
+      } else {
+        return [...prevSelected, subject];
+      }
+    });
+
+    setResponses((prevResponses) => {
+      const currentSelectedSubjects = prevResponses[3]?.selectedExcelSubjects.includes(subject)
+        ? prevResponses[3]?.selectedExcelSubjects.filter((item) => item !== subject)
+        : [...prevResponses[3]?.selectedExcelSubjects || [], subject];
+
+      return {
+        ...prevResponses,
+        3: {
+          selectedExcelSubjects: currentSelectedSubjects,
         },
       };
     });
@@ -59,7 +84,7 @@ const Questionnaire = () => {
       case 2:
         return <QuestionPage2 updateSelectedEnjoyableSubjects={updateSelectedEnjoyableSubjects} />;
       case 3:
-        return <p>Question {questionNumber}.</p>;
+        return <QuestionPage3 updateSelectedExcelSubjects={updateSelectedExcelSubjects} />;
       case 4:
         return <p>Question {questionNumber}.</p>;
       case 5:

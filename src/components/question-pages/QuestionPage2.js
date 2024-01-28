@@ -15,7 +15,7 @@ const QuestionPage2 = ({ updateSelectedEnjoyableSubjects }) => {
         const wordIndex = subject.search(/[^a-zA-Z]/);
         const firstWord = wordIndex !== -1 ? subject.slice(0, wordIndex) : subject;
         const IconComponent = Icons[firstWord + "Svg"];
-        return <OptionCard key={index} subject={subject} icon={<IconComponent /> } className="optionCard" updateSelectedEnjoyableSubjects={updateSelectedEnjoyableSubjects}/>;
+        return <OptionCard key={index} subject={subject} icon={<IconComponent /> } className="optionCard" updateSelectedSubjects={updateSelectedEnjoyableSubjects} />;
       })}
       </div>
     </div>

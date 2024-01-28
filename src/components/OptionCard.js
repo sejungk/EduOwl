@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import '../styles/Questionnaire.css';
 
-const OptionCard = ({ subject, icon, className, updateSelectedEnjoyableSubjects }) => {
+const OptionCard = ({ subject, icon, className, updateSelectedSubjects}) => {
   const [isSelected, setIsSelected] = useState(false);
 
   const handleCardClick = () => {
     setIsSelected(!isSelected);
-    updateSelectedEnjoyableSubjects(subject);
+    updateSelectedSubjects(subject);
   };
 
   return (
