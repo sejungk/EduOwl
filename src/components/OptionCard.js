@@ -1,14 +1,11 @@
 import React from 'react';
+import '../styles/Questionnaire.css';
 
-const OptionCard = ({ subject }) => {
-  const index = subject.search(/[^a-zA-Z]/);
-  const firstWord = index !== -1 ? subject.slice(0, index) : subject;
-  const imageUrl = `/images/${firstWord}.svg`;
-
+const OptionCard = ({ subject, icon }) => {
   return (
     <div className="optionCard">
-      <img src={imageUrl} alt={`${subject} icon`} className="optionIcon" />
-      <p className="optionText">{subject}</p>
+      {icon && <div className="optionIcon">{icon}</div>}
+      <p className="optionCardText">{subject}</p>
     </div>
   );
 };
