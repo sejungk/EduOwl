@@ -9,6 +9,7 @@ import QuestionPage4 from './question-pages/QuestionPage4';
 import QuestionPage5 from './question-pages/QuestionPage5';
 import QuestionPage6 from './question-pages/QuestionPage6';
 import QuestionPage7 from './question-pages/QuestionPage7';
+import ChatBot from './ChatBot'
 import '../styles/Questionnaire.css';
 
 const Questionnaire = () => {
@@ -21,7 +22,6 @@ const Questionnaire = () => {
   const [selectedAspect, setSelectedAspect] = useState([]);
   const [responses, setResponses] = useState({});
 
-
   const updateSelectedEnjoyableSubjects = (subject, isRemoval) => {
     setSelectedEnjoyableSubjects((prevSelected) => {
       if (isRemoval) {
@@ -32,16 +32,16 @@ const Questionnaire = () => {
     });
 
     setResponses((prevResponses) => {
-      const currentSelectedSubjects = prevResponses[2]?.selectedEnjoyableSubjects.includes(subject)
-        ? prevResponses[2]?.selectedEnjoyableSubjects.filter((item) => item !== subject)
-        : [...prevResponses[2]?.selectedEnjoyableSubjects || [], subject];
+      const currentSelectedSubjects = prevResponses.enjoyableSubjects?.selectedEnjoyableSubjects.includes(subject)
+        ? prevResponses.enjoyableSubjects?.selectedEnjoyableSubjects.filter((item) => item !== subject)
+        : [...prevResponses.enjoyableSubjects?.selectedEnjoyableSubjects || [], subject];
 
-      return {
-        ...prevResponses,
-        2: {
-          selectedEnjoyableSubjects: currentSelectedSubjects,
-        },
-      };
+        return {
+          ...prevResponses,
+          enjoyableSubjects: {
+            selectedEnjoyableSubjects: currentSelectedSubjects,
+          },
+        };
     });
   };
 
@@ -55,13 +55,13 @@ const Questionnaire = () => {
     });
 
     setResponses((prevResponses) => {
-      const currentSelectedSubjects = prevResponses[3]?.selectedExcelSubjects.includes(subject)
-        ? prevResponses[3]?.selectedExcelSubjects.filter((item) => item !== subject)
-        : [...prevResponses[3]?.selectedExcelSubjects || [], subject];
+      const currentSelectedSubjects = prevResponses.excelSubjects?.selectedExcelSubjects.includes(subject)
+        ? prevResponses.excelSubjects?.selectedExcelSubjects.filter((item) => item !== subject)
+        : [...prevResponses.excelSubjects?.selectedExcelSubjects || [], subject];
 
       return {
         ...prevResponses,
-        3: {
+        excelSubjects: {
           selectedExcelSubjects: currentSelectedSubjects,
         },
       };
@@ -78,13 +78,13 @@ const Questionnaire = () => {
     });
 
     setResponses((prevResponses) => {
-      const currentSelectedStrengths = prevResponses[4]?.selectedStrengths.includes(strength)
-        ? prevResponses[4]?.selectedStrengths.filter((item) => item !== strength)
-        : [...prevResponses[4]?.selectedStrengths || [], strength];
+      const currentSelectedStrengths = prevResponses.strengths?.selectedStrengths.includes(strength)
+        ? prevResponses.strengths?.selectedStrengths.filter((item) => item !== strength)
+        : [...prevResponses.strengths?.selectedStrengths || [], strength];
 
       return {
         ...prevResponses,
-        4: {
+        strengths: {
           selectedStrengths: currentSelectedStrengths,
         },
       };
@@ -101,13 +101,13 @@ const Questionnaire = () => {
     });
 
     setResponses((prevResponses) => {
-      const currentSelectedWeaknesses = prevResponses[5]?.selectedWeaknesses.includes(weakness)
-        ? prevResponses[5]?.selectedWeaknesses.filter((item) => item !== weakness)
-        : [...prevResponses[5]?.selectedWeaknesses || [], weakness];
+      const currentSelectedWeaknesses = prevResponses.weaknesses?.selectedWeaknesses.includes(weakness)
+        ? prevResponses.weaknesses?.selectedWeaknesses.filter((item) => item !== weakness)
+        : [...prevResponses.weaknesses?.selectedWeaknesses || [], weakness];
 
       return {
         ...prevResponses,
-        5: {
+        weaknesses: {
           selectedWeaknesses: currentSelectedWeaknesses,
         },
       };
@@ -124,13 +124,13 @@ const Questionnaire = () => {
     });
 
     setResponses((prevResponses) => {
-      const currentSelectedRange = prevResponses[6]?.selectedRange.includes(range)
-        ? prevResponses[6]?.selectedRange.filter((item) => item !== range)
-        : [...prevResponses[6]?.selectedRange || [], range];
+      const currentSelectedRange = prevResponses.expectedSalary?.selectedRange.includes(range)
+        ? prevResponses.expectedSalary?.selectedRange.filter((item) => item !== range)
+        : [...prevResponses.expectedSalary?.selectedRange || [], range];
 
       return {
         ...prevResponses,
-        6: {
+        expectedSalary: {
           selectedRange: currentSelectedRange,
         },
       };
@@ -147,13 +147,13 @@ const Questionnaire = () => {
     });
 
     setResponses((prevResponses) => {
-      const currentSelectedAspect = prevResponses[7]?.selectedAspect.includes(aspect)
-        ? prevResponses[7]?.selectedAspect.filter((item) => item !== aspect)
-        : [...prevResponses[7]?.selectedAspect || [], aspect];
+      const currentSelectedAspect = prevResponses.importantAspects?.selectedAspect.includes(aspect)
+        ? prevResponses.importantAspects?.selectedAspect.filter((item) => item !== aspect)
+        : [...prevResponses.importantAspects?.selectedAspect || [], aspect];
 
       return {
         ...prevResponses,
-        7: {
+        importantAspects: {
           selectedAspect: currentSelectedAspect,
         },
       };
@@ -161,12 +161,36 @@ const Questionnaire = () => {
   };
 
   const handleNextQuestion = (questionNumber, response) => {
-    setResponses((prevResponses) => ({ ...prevResponses, [questionNumber]: response }));
+    if (questionNumber === '1') {
+      setResponses((prevResponses) => ({ ...prevResponses,  name: response }));
+    }
+    else if (questionNumber === '2') {
+      setResponses((prevResponses) => ({ ...prevResponses, enjoyableSubjects: response }));
+    }
+    else if (questionNumber === '3') {
+      setResponses((prevResponses) => ({ ...prevResponses, excelSubjects: response }));
+    }
+    else if (questionNumber === '4') {
+      setResponses((prevResponses) => ({ ...prevResponses, strengths: response }));
+    }
+    else if (questionNumber === '5') {
+      setResponses((prevResponses) => ({ ...prevResponses, weaknesses: response }));
+    }
+    else if (questionNumber === '6') {
+      setResponses((prevResponses) => ({ ...prevResponses, expectedSalary: response }));
+    }
+    else if (questionNumber === '7') {
+      setResponses((prevResponses) => ({ ...prevResponses, importantAspects: response }));
+    }
     setCurrentQuestion((prevQuestion) => prevQuestion + 1);
   };
 
+  useEffect(() => {
+    console.log('Updated Responses:', responses);
+  }, [responses]); // Add responses as a dependency to useEffect
+
   const handleNameChange = (name) => {
-    setResponses((prevResponses) => ({ ...prevResponses, 1: name }));
+    setResponses((prevResponses) => ({ ...prevResponses, name }));
   };
 
   useEffect(() => {
@@ -180,7 +204,7 @@ const Questionnaire = () => {
   const renderQuestionContent = (questionNumber) => {
     switch (questionNumber) {
       case 1:
-        return <QuestionPage1 name={responses[1]} onNameChange={handleNameChange} />;
+        return <QuestionPage1 name={responses.name} onNameChange={handleNameChange} />;
       case 2:
         return <QuestionPage2 updateSelectedEnjoyableSubjects={updateSelectedEnjoyableSubjects} />;
       case 3:
@@ -193,6 +217,8 @@ const Questionnaire = () => {
         return <QuestionPage6 updateSelectedRange={updateSelectedRange} />;
       case 7:
         return <QuestionPage7 updateSelectedAspect={updateSelectedAspect} />;
+      case 8:
+        return <ChatBot responses={responses}/>;
       default:
         return <p>No content for this question.</p>;
     }
@@ -204,26 +230,25 @@ const Questionnaire = () => {
 
   return (
     <div className="questionnaire">
-      <ProgressBar currentQuestion={currentQuestion} totalQuestions={7} />
+      {currentQuestion !== 8 && <ProgressBar currentQuestion={currentQuestion} totalQuestions={7} />}
 
       {renderQuestionContent(currentQuestion)}
-      <div className="buttonContainer">
+      {currentQuestion !== 8 && <div className="buttonContainer">
         <StrokeBttn
           onClick={handleBackQuestion}
           label="Back"
           className={`backButton ${currentQuestion <= 1 ? 'disabled' : ''}`}
         />
-        {currentQuestion === 7 ? (
-          <SolidBttn onClick={handleCompleteQuestionnaire} label="Submit" />
-        ) : (
-          <SolidBttn
-            onClick={() => handleNextQuestion(currentQuestion, responses[currentQuestion] || null)}
-            label="Continue"
-          />
-        )}
+         <SolidBttn
+          onClick={() => handleNextQuestion(currentQuestion, responses[currentQuestion] || null)}
+          label="Continue"
+        />
       </div>
+      }
     </div>
   );
 };
 
 export default Questionnaire;
+
+
