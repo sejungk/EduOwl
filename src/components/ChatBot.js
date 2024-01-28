@@ -131,6 +131,46 @@ const ChatBot = ({responses}) => {
     }}
     >
       <input
+          className="messageTextBox"
+          type="text"
+          name="input"
+          placeholder="Type your message..."
+          disabled={isTyping}
+        />
+        <img
+          src="/images/message-send.svg"
+          alt="Send"
+          className="messageSendBttn"
+          onClick={(e) => {
+            e.preventDefault();
+            const input = e.target.parentElement.querySelector('input').value;
+            if (input.trim() !== "") {
+              handleSendMessage(input);
+              e.target.parentElement.reset();
+            }
+          }}
+          style={{
+            cursor: isTyping ? 'not-allowed' : 'pointer',
+            opacity: isTyping ? 0.5 : 1,
+          }}
+        />
+
+      {/* <button
+        type="submit"
+        disabled={isTyping}
+      >
+        Send
+      </button> */}
+    </form>
+  </div>
+  );
+};
+
+export default ChatBot;
+
+
+      {/* <input
+        className="messageTextBox"
         type="text"
         name="input"
         placeholder="Type your message..."
@@ -147,4 +187,4 @@ const ChatBot = ({responses}) => {
   );
 };
 
-export default ChatBot;
+export default ChatBot; */}

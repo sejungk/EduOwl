@@ -5,11 +5,38 @@
   flex-direction: column;
   justify-content: space-between;
 }
+
 .messageTextBox {
+  display: flex;
+  align-items: center;
   padding: 15px;
   border: 2px solid #ccc;
   border-radius: 50px;
   margin: 4px;
   font-size: 16px;
-  width: 95%;
+  width: 80%;
+}
+
+.messageTextBox input {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+}
+
+.messageSendBttn {
+  height: 30px;
+  position: absolute;
+  right: 15%; /* Adjust the right position as needed */
+  top: 91.5%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  opacity: 1;
+}
+
+.messageSendBttn {
+  cursor: pointer;
+  opacity: 1;
+  margin-left: 10px; /* Add margin between input and image */
 }
