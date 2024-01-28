@@ -20,7 +20,7 @@ Building EduOwl involved meticulous gathering of the latest admission informatio
   - Contact: sejungkim129@gmail.com
 
 - **Blen Begashaw**
-  - Role:Backend Developer
+  - Role: Backend Developer
   - School: Marymount University
   - Contact: bwb61179@marymount.edu
 
