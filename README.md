@@ -29,7 +29,7 @@ Building EduOwl involved meticulous gathering of the latest admission informatio
   - School: Rowan University
   - Contact: khaikoh112@gmail.com
 
- - **Czianell Magbago**
+- **Czianell Magbago**
   - Role: Backend Developer
   - School: Rowan University
   - Contact: cdmagbago@gmail.com
